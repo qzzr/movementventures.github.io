@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html>
+<head>
+  
+  <meta charset="utf-8">
+
+  <title>Create Beautiful Quizzes: Free Online Quiz Maker - Qzzr</title>
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+
+  <meta name="description" content="Qzzr is a simple online quiz tool that allows you to quickly create beautiful quizzes, post them anywhere on the web, view on any device, and easily track results.">
+
+  <meta property="og:title" content="Qzzr, the world's simplest quiz tool" />
+  <meta property="og:url" content="http://qzzr.co" />
+  <meta property="og:description" content="Make a quiz, send it out, track results... that’s it." />
+  <meta property="og:image" content="/assets/images/default-quiz-image.png" />
+
+  <!-- <meta name="FB_ID" content="<%= get_fb_id %>"/> -->
+  
+  <!-- CSS -->
+  <link rel='stylesheet' href='../assets/stylesheets/application.css'>
+
+  <!-- Fav and Touch Icons -->
+  <link href="assets/ico/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon">
+  <link href="assets/ico/apple-touch-icon-57-precomposed.png" rel="apple-touch-icon-precomposed" type="image/png">
+  <link href="assets/ico/apple-touch-icon-72-precomposed.png" rel="apple-touch-icon-precomposed" type="image/png">
+  <link href="assets/ico/apple-touch-icon-76-precomposed.png" rel="apple-touch-icon-precomposed" type="image/png">
+  <link href="assets/ico/apple-touch-icon-114-precomposed.png" rel="apple-touch-icon-precomposed" type="image/png">
+  <link href="assets/ico/apple-touch-icon-120-precomposed.png" rel="apple-touch-icon-precomposed" type="image/png">
+  <link href="assets/ico/apple-touch-icon-144-precomposed.png" rel="apple-touch-icon-precomposed" type="image/png">
+  <link href="assets/ico/apple-touch-icon-152-precomposed.png" rel="apple-touch-icon-precomposed" type="image/png">
+
+  
+  <!-- Scripts -->
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src='../assets/javascripts/modernizr.js'></script>
+
+  <!-- Hack for fackbook redirect anchor -->
+  <script type="text/javascript">
+    if (window.location.hash && window.location.hash == '#_=_') {
+        window.location.hash = '';
+    }
+  </script>
+
+
+  <style>
+    .dumb-center-wrapper {
+      height: 310px;
+      position: relative;
+      overflow: hidden;
+    }
+    .dumb-center-transform {
+      position: absolute;
+      left: 50%;
+      text-align: center;
+      white-space: nowrap;
+      overflow: hidden;
+      -webkit-transform: translateX(-50%);
+         -moz-transform: translateX(-50%);
+          -ms-transform: translateX(-50%);
+           -o-transform: translateX(-50%);
+              transform: translateX(-50%);
+    }
+    .dumb-center-wrapper .event-card {
+      text-align: left;
+      margin: 0 4px;
+      width: 240px;
+      opacity: .5;
+      display: inline-block;
+      padding-bottom: 0;
+      white-space: normal;
+    }
+    .dumb-center-wrapper .event-card.is-highlighted,
+    .dumb-center-wrapper .event-card:hover {
+      opacity: 1;
+    }
+    .dumb-center-wrapper .event-card-thumbnail {
+      position: relative;
+      padding-bottom: 56.25%;
+      display: block;
+    }
+  </style>
+
+
+</head>
+<body>
+  <!--[if lt IE 10]>You are using an outdated version of Internet Explorer.  Qzzr is not compatible with any IE version under 10. Please go to Windows Updates and install the latest version.<![endif]-->
+ <!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-M8HD4R"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-M8HD4R');</script>
+
+<div id="fb-root"></div>
+
+
+
+<nav class="nav-bar">
+  <a href="/" class='nav-bar-logo logo logo-white'>
+    QZZR
+  </a>
+  <nav class="nav-tabs nav-bar-tabs">
+  <a href="/tour/" class='nav-link'>Tour</a>
+  <div class="dropdown mln">
+      <a class='nav-link dropdown-trigger js-dropdown-trigger' href="#toggleShowUses">Uses</a>
+      <ul class="dropdown-menu list list-picker">
+        <li class="list-item pl3">
+          <a href="/drive-social-traffic/" class='list-item-label'>
+            Drive social traffic
+          </a>
+        </li>
+        <li class="list-item pl3">
+          <a href="/generate-qualified-leads/" class='list-item-label h8'>
+            Capture qualified leads
+          </a>
+        </li>
+        <li class="list-item pl3">
+          <a href="/present-targeted-offers/" class='list-item-label'>
+            Present targeted offers
+          </a>
+        </li>
+      </ul>
+    </div>
+  <a href="/pricing/" class='nav-link'>Pricing</a>
+  <a href="/about/" class='nav-link'>About</a>
+  <a href="http://blog.qzzr.com"  class='nav-link'>Blog</a>
+</nav>
+
+  <div class="nav-bar-actions">
+    <nav class="nav-bar-action">
+      <a href="https://app.qzzr.com/new" class="button button-primary button-with-label tooltip tooltip-always tooltip-primary mr2" data-tooltip="It's free">
+        <i class="icon icon-ss-compose"></i>
+        <span class="inline-block">
+          <span class="button-label wxl-none">Create a quiz</span>
+        </span>
+      </a>
+      <a class="button button-white button-outline" href="https://app.qzzr.com/account/signin">
+        Log in
+      </a>
+    </nav>
+  </div>
+</nav>
+
+<div class="page-main">
+
+
+<div class="page-wrapper">
+  <section class="hero hero-pricing">
+    <section class="hero-content">
+      <h1 class="hero-heading h1 red-color">
+        Simple tool, powerful results.
+      </h1>
+      <section class="hero-blurb">
+        <h4 class="h5">
+          Publish your first awesome quiz and share it with the world today!
+        </h4>
+      </section>
+    </section>
+
+  </section>
+
+
+  <div class="grid pb5">
+
+    <script type="text/javascript">
+  var monthlyShowing = false;
+  function toggleMonthly () {
+    var pro = window.document.getElementById('pro-pricing');
+    if (monthlyShowing) {
+      pro.className = pro.className.replace('show-monthly', '');
+      monthlyShowing = false;
+    } else {
+      pro.className = [pro.className, 'show-monthly'].join(' ');
+      monthlyShowing = true;
+    }
+  }
+</script>
+
+<section class="col-3 col-offset-1 col-wxxl-offset-0 col-wxxl-6 col-wm-10 col-wm-offset-1 col-ws-12 col-ws-offset-0 mb4">
+  <article class="box box-pricing box-enterprise">
+    <header class="box-header">
+      <h3 class="box-header-heading h4">
+        Basic
+      </h3>
+      <strong class="b">Free</strong>
+      <h6 class="box-header-subheading">for bloggers, startups, and soccer cousins</h6>
+    </header>
+    <section class="box-body">
+      <ul>
+        <li class="list-item">Unlimited quizzes</li>
+        <li class="list-item">Unlimited completions</li>
+        <li class="list-item">Unlimited shares</li>
+        <li class="list-item">Multimedia content</li>
+        <li class="list-item">Custom themes &amp; colors</li>
+        <li class="list-item">Full analytics</li>
+      </ul>
+    </section>
+    <footer class="box-footer">
+      <a href="http://app.qzzr.com/account/signup" class="button">Sign up</a>
+    </footer>
+  </article>
+</section>
+<section class="col-4 col-wxxl-6 col-wm-10 col-wm-offset-1 col-ws-12 col-ws-offset-0 mb4">
+  <article id="pro-pricing" class="box box-pricing box-enterprise">
+    <div class="per-year">
+      <header class="box-header">
+        <h3 class="box-header-heading h4">
+          Pro
+        </h3>
+        <strong class="b">$299/year</strong>
+        <span class="float-right link opacity-6 toggle" onclick="toggleMonthly()">Show Monthly</span>
+        <h6 class="box-header-subheading">for marketers, small biz, and e-commerce</h6>
+      </header>
+      <section class="box-body">
+  <span class="opacity-5">All the goodness of Basic</span>
+  <ul>
+    <li class="list-item">
+      <a href="/generate-qualified-leads/">
+        Unlimited leads
+        <span class="tooltip tooltip-long help-icon" data-tooltip="You can add a lead form and custom text before or after the results page of your quiz.">
+          <i class="icon-ss-info icon"></i>
+        </span>
+      </a>
+    </li>
+    <li class="list-item">
+      <a href="/drive-social-traffic/">
+        Unlimited Facebook likes
+        <span class="tooltip tooltip-long help-icon" data-tooltip="Shares via our social media buttons link back to your site."><i class="icon-ss-info icon"></i></span>
+      </a>
+    </li>
+    <li class="list-item">
+      <a href="/present-targeted-offers/">
+        Unlimited offer links
+        <span class="tooltip tooltip-long help-icon" data-tooltip="Present an offer at the end of your quiz to send people to another site or page."><i class="icon-ss-info icon"></i></span>
+      </a>
+    </li>
+    <li class="list-item">Export leads and data</li>
+    <li class="list-item">Reduced Qzzr branding</li>
+    <li class="list-item">
+      Customize tweet text
+      <span class="tooltip tooltip-long help-icon"
+        data-tooltip="Add your Twitter handle and hashtags to your quizzes.">
+        <i class="icon-ss-info icon"></i>
+      </span>
+    </li>
+    <li class="list-item">
+      Disable suggested quizzes
+      <span class="tooltip tooltip-long help-icon"
+        data-tooltip="Disable the suggested quizzes that are shown at the end of a quiz.">
+        <i class="icon-ss-info icon"></i>
+      </span>
+    </li>
+    <li class="list-item">
+      Unlisted quizzes
+      <span class="tooltip tooltip-long help-icon"
+        data-tooltip="Hide quizzes from Qzzr content network.">
+        <i class="icon-ss-info icon"></i>
+      </span>
+    </li>
+  </ul>
+</section>
+
+      <footer class="box-footer">
+          <a href="http://app.qzzr.com/account/signup_pro/58" class="button">Sign up</a>
+      </footer>
+    </div>
+    <div class="per-month">
+      <header class="box-header">
+        <h3 class="box-header-heading h4">
+          Pro
+        </h3>
+        <strong class="b">$49/month</strong>
+        <span class="float-right link opacity-6 toggle" onclick="toggleMonthly()">Show Yearly</span>
+        <h6 class="box-header-subheading">for marketers, small biz, and e-commerce</h6>
+      </header>
+      <section class="box-body">
+  <span class="opacity-5">All the goodness of Basic</span>
+  <ul>
+    <li class="list-item">
+      <a href="/generate-qualified-leads/">
+        Unlimited leads
+        <span class="tooltip tooltip-long help-icon" data-tooltip="You can add a lead form and custom text before or after the results page of your quiz.">
+          <i class="icon-ss-info icon"></i>
+        </span>
+      </a>
+    </li>
+    <li class="list-item">
+      <a href="/drive-social-traffic/">
+        Unlimited Facebook likes
+        <span class="tooltip tooltip-long help-icon" data-tooltip="Shares via our social media buttons link back to your site."><i class="icon-ss-info icon"></i></span>
+      </a>
+    </li>
+    <li class="list-item">
+      <a href="/present-targeted-offers/">
+        Unlimited offer links
+        <span class="tooltip tooltip-long help-icon" data-tooltip="Present an offer at the end of your quiz to send people to another site or page."><i class="icon-ss-info icon"></i></span>
+      </a>
+    </li>
+    <li class="list-item">Export leads and data</li>
+    <li class="list-item">Reduced Qzzr branding</li>
+    <li class="list-item">
+      Customize tweet text
+      <span class="tooltip tooltip-long help-icon"
+        data-tooltip="Add your Twitter handle and hashtags to your quizzes.">
+        <i class="icon-ss-info icon"></i>
+      </span>
+    </li>
+    <li class="list-item">
+      Disable suggested quizzes
+      <span class="tooltip tooltip-long help-icon"
+        data-tooltip="Disable the suggested quizzes that are shown at the end of a quiz.">
+        <i class="icon-ss-info icon"></i>
+      </span>
+    </li>
+    <li class="list-item">
+      Unlisted quizzes
+      <span class="tooltip tooltip-long help-icon"
+        data-tooltip="Hide quizzes from Qzzr content network.">
+        <i class="icon-ss-info icon"></i>
+      </span>
+    </li>
+  </ul>
+</section>
+
+      <footer class="box-footer">
+          <a href="http://app.qzzr.com/account/signup_pro/59" class="button">Sign up</a>
+      </footer>
+    </div>
+  </article> 
+</section>
+
+<section class="col-3 col-wxxl-6 col-wxxl-offset-3 col-wm-10 col-wm-offset-1 col-ws-12 col-ws-offset-0 mb4">
+  <article class="box box-pricing box-enterprise">
+    <header class="box-header">
+      <h3 class="box-header-heading h4">
+        Enterprise
+      </h3>
+      <strong class="b">Custom plans</strong>
+      <h6 class="box-header-subheading">for agencies, brands, and publishers</h6>
+    </header>
+    <section class="box-body">
+      <span class="opacity-5">All the goodness of Pro</span>
+      <ul>
+        <li class="list-item">White Label</li>
+        <li class="list-item">Multiple accounts</li>
+        <li class="list-item">Multiple brand support</li>
+        <li class="list-item">VIP support and strategy</li>
+      </ul>
+    </section>
+    <footer class="box-footer">
+      <a href="mailto:sales@qzzr.com?subject=Qzzr Enterprise..." class="button">Request info</a>
+    </footer>
+  </article> 
+</section>
+
+  </div>
+
+  <div class="grid">
+    <div class="col-10 col-offset-1 text-center">
+      <p class="">
+        <strong class="b">We guarantee that you will absolutely love Qzzr and our support.</strong><br>
+        <span class="opacity-5">If you don’t for any reason, just let us know and we will either make it right or provide a full refund for your service.</span>
+      </p>
+      <hr class="rule mb6 mt6">
+    </div>
+  </div>
+
+  <div class="text-center pb7">
+    <p class="h3 mb4">Want a quiz made for you?</p>
+    <a href="../agencies/index.html" class='marketing.agencies button button-outline button-primary'>
+      Talk with one of these agencies
+    </a>
+    <hr class="rule mt6">
+  </div>
+
+  <div class="grid text-center">
+    <h2 class="h2 pb5">Does Qzzr _______?</h2>
+    <div class="col-6 col-wm-12">
+      <ul class="list-yes">
+        <li class="list-item mb2">have a free account? <p class="mint-color">Yep.</p></li>
+        <li class="list-item mb2">allow me to upgrade, downgrade, or cancel at any time? <p class="mint-color">Mmmhmm.</p></li>
+        <li class="list-item mb2">have a capable team behind it who has done this many times before? <p class="mint-color">Most definitely.</p></li>
+        <li class="list-item mb2">have enough funding? <p class="mint-color">You betcha.</p></li>
+        <li class="list-item mb2">have good support in case I need help? <p class="mint-color">Only the best.</p></li>
+        <li class="list-item mb2">have bandwidth to support my insanely viral quiz on my huge channel? <p class="mint-color">*nods head*.</p></li>
+        <li class="list-item mb2">work on any device or screen size? <p class="mint-color">Pretty much.</p></li>
+        <li class="list-item mb2">share easily on social media? <p class="mint-color">So easy.</p></li>
+        <li class="list-item mb2">embed on any site or blog? <p class="mint-color">Si.</p></li>
+        <li class="list-item mb2">have SEO friendly content? <p class="mint-color">Yes.</p></li>
+        <li class="list-item mb2">let me put in my own company name and logo? <p class="mint-color">Oui.</p></li>
+        <li class="list-item mb2">provide me with my own profile page to launch quizzes from? <p class="mint-color">Yessir(or ma'am).</p></li>
+        <li class="list-item mb2">support images (jpg, png, animated gif)?  <p class="mint-color">Heck yeah!</p></li>
+        <li class="list-item">allow question level feedback? <p class="mint-color">Sure.</p></li>
+        <li class="list-item mb2">randomize question order? <p class="mint-color">It's an option.</p></li>
+        <li class="list-item mb2">allow fixed question order? <p class="mint-color">Affirmative.</p></li>
+        <li class="list-item mb2">randomize answer order? <p class="mint-color">Roger.</p></li>
+        <li class="list-item mb2">allow fixed answer order? <p class="mint-color">Absolutely.</p></li>
+      </ul>
+    </div>
+    <div class="col-6 col-wm-12">
+      <ul class="list-yes">
+        <li class="list-item mb2">allow unlimited answer options? <p class="mint-color">As unlimited as your imagination.</p></li>
+        <li class="list-item mb2">allow unlimited questions? <p class="mint-color">Aye.</p></li>
+        <li class="list-item mb2">allow unlimited quizzes? <p class="mint-color">Yup.</p></li>
+        <li class="list-item mb2">have multiple choice questions? <p class="mint-color">Uh-huh.</p></li>
+        <li class="list-item mb2">have multiple answer questions? <p class="mint-color">Yep.</p></li>
+        <li class="list-item mb2">have true/false questions? <p class="mint-color">Of course.</p></li>
+        <li class="list-item mb2">allow me to attribute images (through description)? <p class="mint-color">Aw yeah!</p></li>
+        <li class="list-item mb2">allow me to require a confirmation before providing a final answer. <p class="mint-color">Confirm-ative.</p></li>
+        <li class="list-item mb2">let me preview my work before I publish? <p class="mint-color">Positive.</p></li>
+        <li class="list-item mb2">give me a link to send in email, add to a site, or place in a document? <p class="mint-color">Yessum.</p></li>
+        <li class="list-item mb2">support stunning background images? <p class="mint-color">You know it.</p></li>
+        <li class="list-item mb2">track the scores and names of people taking a quiz. <p class="mint-color">Dang straight.</p></li>
+        <li class="list-item mb2">redirect the shares to where my quiz is embedded? <p class="mint-color">Yah.</p></li>
+        <li class="list-item mb2">allow me to capture leads? <p class="mint-color">Only the best.</p></li>
+        <li class="list-item mb2">tell me how my leads answered my questions? <p class="mint-color">Ja.</p></li>
+        <li class="list-item mb2">allow me to present an offer at the end of a quiz and send someone to a landing page. <p class="mint-color">Definitely.</p></li>
+        <li class="list-item mb2">show me rich analytics about my quiz? <p class="mint-color">Oh yes.</p></li>
+        <li class="list-item mb2">allow me to export my scores or leads? <p class="mint-color">Every last one.</p></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="text-center pb7">
+    <hr class="rule mt6 mb6">
+    <p class="h3 mb4">Still not sure? We would love to talk to you.</p>
+    <a href="mailto:hello@qzzr.co" target="_blank" class="button button-outline button-primary">
+      Get in touch
+    </a>
+  </div>
+</div>
+
+
+
+  <div class="page-wrapper">
+
+  <nav class="text-center purple-bg pt4 pb4">
+    <a href="/pricing/" class="button button-large h6 b button-outline button-white">
+      <span class="button-label pt3" style="display: block;">Get started now</span>
+      <span class="h8-cap opacity-5 h mbn mtn">It's free</span>
+    </a>
+  </nav>
+
+  <div class="grid gray-dark-bg pb4">
+    <div class="col-10 col-offset-1 col-wxxxl-12 col-wxxxl-offset-0">
+
+      <div class="grid grid-nested">
+        <div class="col-3 col-wxxl-6 col-ws-12">
+          <ul class="list-nav-inverted">
+            <li class="list-item">
+              <a href="/" class="list-item-link">Home</a>
+            </li>
+            <li class="list-item">
+              <a href="/pricing/" class='list-item-link'>Pricing</a>
+            </li>
+            <li class="list-item">
+              <a href="/about/" class='list-item-link'>About</a>
+            </li>
+            <li class="list-item">
+              <a href="http://blog.qzzr.com" class="list-item-link">
+                Blog
+              </a>
+            </li>
+            <li class="list-item">
+              <a href="/agencies/" class="list-item-link">Need a Quiz Made?</a>
+            </li>
+        </div>
+
+        <div class="col-3 col-wxxl-6 col-ws-12">
+          <ul class="list-nav-inverted">
+            <li class="list-item-header">Use cases</li>
+            <li class="list-item">
+              <a href="/drive-social-traffic/" class='list-item-link'>Drive social traffic</a>
+            </li>
+            <li class="list-item">
+              <a href="/generate-qualified-leads/" class='list-item-link'>Generate qualified leads</a>
+            </li>
+            <li class="list-item">
+              <a href="/present-targeted-offers/" class='list-item-link'>Present targeted offers</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-3 col-wxxl-6 col-ws-12">
+          <ul class="list-nav-inverted">
+            <li class="list-item-header">Be friendly</li>
+            <li class="list-item">
+              <a href="https://www.facebook.com/pages/QZZR/200008303516674" class="list-item-link">
+                Like us on Facebook
+              </a>
+            </li>
+            <li class="list-item">
+              <a href="https://twitter.com/Qzzr_" class="list-item-link">
+                Follow us on Twitter
+              </a>
+            </li>
+            <li class="list-item">
+              <a href="https://www.linkedin.com/company/qzzr" class="list-item-link">
+                Do something on Linkedin
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-3 col-wxxl-6 col-ws-12">
+          <ul class="list-nav-inverted">
+            <li class="list-item-header">&copy; 2014 Qzzr</li>
+            <li class="list-item">
+              <a href="/terms/" class='list-item-link'>Terms of service</a>
+            </li>
+            <li class="list-item">
+              <a href="/privacy/" class='list-item-link'>Privacy policy</a>
+            </li>
+            <li class="list-item">
+              <a href="/content/" class='list-item-link'>Content Guidelines</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div> 
+</div>
+
+ <div class="modal-backdrop js-close-modal" style="display: none"></div>
+
+<div id="videoModal" class='modal modal-video' style="display: none">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <iframe src="//player.vimeo.com/video/102863517?title=0&amp;byline=0&amp;portrait=0&amp;color=9559ce&amp;autoplay=0" width="500" height="290" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+        
+        <div class="text-center pt4">
+          <a href='/pricing/' class="button button-large button-primary h6 b">
+            <span class="button-label pt3" style="display: block;">Get started now</span>
+            <span class="h8-cap opacity-5 h mbn mtn">It's free</span>
+          </a>
+        </div> 
+      </div>
+    </div>
+  </div>
+
+  <a class="modal-close js-close-modal"><i class="icon-ss-delete"></i></a>
+</div>
+
+  <script src='../assets/javascripts/jquery.fancybox.js'></script>
+  <script src='../assets/javascripts/jquery.fitvids.js'></script>
+
+
+  <!-- Google Analytics -->
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-45882503-8', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+<!-- Browser Update -->
+<script type="text/javascript"> 
+  var $buoop = {vs:{i:9,f:15,o:15,s:5.1,n:9}}; 
+  $buoop.ol = window.onload; 
+  window.onload=function(){ 
+    try {if ($buoop.ol) $buoop.ol();}catch (e) {} 
+    var e = document.createElement("script"); 
+    e.setAttribute("type", "text/javascript"); 
+    e.setAttribute("src", "//browser-update.org/update.js"); 
+    document.body.appendChild(e); 
+  }
+</script>
+<script>
+  $(document).ready(function(){
+    var $body = $('body'),
+      $adModal = $('#videoModal, .modal-backdrop');
+
+    $('.js-dropdown-trigger').click(function(){
+      event.stopPropagation();
+      $(this).parent('.dropdown').toggleClass('is-active');
+    })
+
+    $(document).click( function(){
+      $('.dropdown').removeClass('is-active');
+    });
+
+    $('.js-modal-trigger').click(function(){
+      $body.append($adModal);
+      $adModal.show();
+      return false;
+    });
+
+    $('.js-close-modal').click(function(){
+      $adModal.hide();
+      $adModal.detach();
+      return false;
+    });
+
+    $('#videoModal').fitVids();
+  });
+</script>
+
+<!-- Typekit -->
+<script type="text/javascript" src="//use.typekit.net/ncg3ahx.js"></script>
+<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+</body>
+</html>
